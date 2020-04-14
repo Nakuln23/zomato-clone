@@ -1,1 +1,1 @@
-import Card from './Card'
+import RestaurantMainCard from "./Card/Card";

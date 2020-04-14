@@ -1,14 +1,21 @@
-import React from 'react';
-import axios from 'axios'
-
-axios.defaults.headers.common['Authorization'] = '5a376a142eebe7508fe09a883cab8dc2'
+import React from "react";
+import axios from "axios";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./store";
+import Search from "./features/Search/Search";
 
 function App() {
   return (
-    <div className="App">
-     
-     
-    </div>
+    <Provider store={store}>
+      <Router>
+        <Switch>
+          <Route path="/:city">
+            <Search />
+          </Route>
+        </Switch>
+      </Router>
+    </Provider>
   );
 }
 
