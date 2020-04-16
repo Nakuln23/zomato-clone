@@ -1,4 +1,4 @@
 # dependencies
 /node_modules
 .env
-./src/config.ts
+/src/config.ts
