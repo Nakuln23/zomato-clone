@@ -1,6 +1,6 @@
 import { combineReducers } from "@reduxjs/toolkit";
 
-import { onSearchReducer } from "../features/Search";
+import { onSearchReducer } from "../features/Search/search.slice";
 
 const rootReducer = combineReducers({
   SearchState: onSearchReducer,

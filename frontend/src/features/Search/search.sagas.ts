@@ -9,13 +9,11 @@ import {
 function* getDefaults(action: any) {
   try {
     // const data = axios.get("https://developers.zomato.com/api/v2.1");
-    const response = yield call(() =>
-      axios.get("https://developers.zomato.com/api/v2.1")
-    );
-    console.log(response);
+    const response = yield call(() => axios.get("/api/categories"));
+
     yield put(
       getDefaultsSuccess({
-        restaurantList: response,
+        restaurantList: response.data,
       })
     );
   } catch (err) {
