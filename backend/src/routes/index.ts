@@ -1,12 +1,16 @@
 import { Router } from "express";
-// import UserRouter from "./Users";
-import ZomatoRouter from "./Zomato";
+
+import CommonRouter from "./Common";
+import RestaurantRouter from "./Restaurant";
+import LocationRouter from "./Location";
 
 // Init router and path
 const router = Router();
 
 // Add sub-routes
-router.use("/", ZomatoRouter);
+router.use("/", CommonRouter);
+router.use("/", RestaurantRouter);
+router.use("/", LocationRouter);
 
 // Export the base-router
 export default router;
