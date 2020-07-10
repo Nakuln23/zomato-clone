@@ -13,6 +13,7 @@ export const SEARCH_RESTAURANT_FEATURE_KEY = "search";
 
 export const initialSearchRestaurantState = {
   restaurantList: [],
+  locationBySearch: {} as any,
   loaded: false,
   error: null,
 };
@@ -32,6 +33,15 @@ export const onSearchSlice = createSlice({
     getDefaultsFailure: (state, action) => {
       state.error = action.payload;
     },
+    getLocationBySearchStart: (state, action) => {
+      state.loaded = false;
+    },
+    getLocationBySearchSuccess: (state, action) => {
+      state.locationBySearch = action.payload;
+    },
+    getLocationBySearchFailure: (state, action) => {
+      state.error = action.payload;
+    },
   },
 });
 
@@ -44,7 +54,17 @@ export const {
   getDefaultsStart,
   getDefaultsSuccess,
   getDefaultsFailure,
+  getLocationBySearchStart,
+  getLocationBySearchSuccess,
+  getLocationBySearchFailure,
 } = onSearchSlice.actions;
 
 export const getSearchState = (rootState: any) =>
   rootState[SEARCH_RESTAURANT_FEATURE_KEY];
+
+export const selectLoaded = createSelector(getSearchState, (s) => s.loaded);
+
+export const selectLocationBySearch = createSelector(
+  getSearchState,
+  (s) => s.locationBySearch
+);

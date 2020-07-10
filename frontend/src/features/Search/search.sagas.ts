@@ -4,6 +4,9 @@ import {
   getDefaultsSuccess,
   getDefaultsStart,
   getDefaultsFailure,
+  getLocationBySearchSuccess,
+  getLocationBySearchFailure,
+  getLocationBySearchStart,
 } from "./search.slice";
 
 function* getDefaults(action: any) {
@@ -23,6 +26,29 @@ function* getDefaults(action: any) {
   }
 }
 
+function* onGetLocationBySearch(action: any) {
+  try {
+    // const data = axios.get("https://developers.zomato.com/api/v2.1");
+    const response = yield call(() =>
+      axios({
+        method: "GET",
+        url: `/api/cities`,
+        params: action.params,
+      })
+    );
+
+    yield put(getLocationBySearchSuccess(response.data));
+  } catch (err) {
+    console.error("getCountries:error", err);
+    yield put(getLocationBySearchFailure(err));
+    throw err;
+  }
+}
+
 export function* onSearchSagaWatcher() {
-  yield all([takeLatest(getDefaultsStart.type, getDefaults)]);
+  yield all([
+    takeLatest(getDefaultsStart.type, getDefaults),
+
+    takeLatest(getLocationBySearchStart.type, onGetLocationBySearch),
+  ]);
 }
