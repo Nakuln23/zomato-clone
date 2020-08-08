@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import Search from "../features/Search/Search";
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import Search from '../features/Search/Search';
 
 const HomePage = () => {
   const { city } = useParams();
