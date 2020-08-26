@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import RestaurantMainCard from "../../common/components/Card/Card";
+import RestaurantMainCard from "../../common/components/core/Card/Card";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { getDefaultsStart, selectLoaded } from "./search.slice";
 import { useParams } from "react-router-dom";

@@ -5,8 +5,10 @@ import { Provider } from 'react-redux';
 import store from './store';
 import Search from './features/Search/Search';
 import HomePage from './pages/HomePage';
+import { usePosition } from './common/hooks/usePosition';
 
 function App() {
+  const { latitude, longitude, error } = usePosition();
   return (
     <Provider store={store}>
       <Router>
