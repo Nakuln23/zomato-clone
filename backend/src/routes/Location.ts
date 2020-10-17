@@ -34,7 +34,7 @@ router.get("/locations", async (req: Request, res: Response) => {
   try {
     const response = await axios({
       method: "GET",
-      url: `${URL}/cities`,
+      url: `${URL}/locations`,
       headers,
       params: {
         query: req.query.query,

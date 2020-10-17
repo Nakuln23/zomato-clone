@@ -4,11 +4,11 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
 import Search from './features/Search/Search';
-import HomePage from './pages/HomePage';
+import HomePage from './pages/Home/Home';
 import { usePosition } from './common/hooks/usePosition';
 
 function App() {
-  const { latitude, longitude, error } = usePosition();
+  
   return (
     <Provider store={store}>
       <Router>
