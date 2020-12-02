@@ -1,7 +1,7 @@
-import React from 'react';
-import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import React from "react";
+import TextField from "@material-ui/core/TextField";
+import Autocomplete from "@material-ui/lab/Autocomplete";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 interface CountryType {
   name: string;
@@ -27,7 +27,7 @@ export default function SearchBar() {
 
     (async () => {
       const response = await fetch(
-        'https://country.register.gov.uk/records.json?page-size=5000'
+        "https://country.register.gov.uk/records.json?page-size=5000"
       );
       await sleep(1e3); // For demo purposes.
       const countries = await response.json();
@@ -54,7 +54,6 @@ export default function SearchBar() {
 
   return (
     <Autocomplete
-      id="asynchronous-demo"
       style={{ width: 300 }}
       open={open}
       onOpen={() => {
@@ -70,14 +69,14 @@ export default function SearchBar() {
       renderInput={(params) => (
         <TextField
           {...params}
-          label="Asynchronous"
-          variant="outlined"
+          label='Search for restaurant, cuisine or a dish'
+          variant='outlined'
           InputProps={{
             ...params.InputProps,
             endAdornment: (
               <React.Fragment>
                 {loading ? (
-                  <CircularProgress color="inherit" size={20} />
+                  <CircularProgress color='inherit' size={20} />
                 ) : null}
                 {params.InputProps.endAdornment}
               </React.Fragment>

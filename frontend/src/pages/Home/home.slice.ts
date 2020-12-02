@@ -4,11 +4,31 @@ import {
   Action,
   PayloadAction,
 } from "@reduxjs/toolkit";
-import { getLocationParams, locationEntity } from "./interfaces";
 
 export const HOME_FEATURE_KEY = "HomeState";
 
-export const initialHomeState = {
+interface IUserLocationDetails {
+  
+    entity_type: string,
+    entity_id: number,
+    title: string,
+    latitude: number,
+    longitude: number,
+    city_id: number,
+    city_name: string,
+    country_id: number,
+    country_name: string
+  
+}
+
+interface IHomeState {
+  restaurantList: [],
+  userLocationDetails: IUserLocationDetails[],
+  loaded: boolean,
+  error: null | string,
+}
+
+export const initialHomeState : IHomeState = {
   restaurantList: [],
   userLocationDetails: [],
   loaded: false,
