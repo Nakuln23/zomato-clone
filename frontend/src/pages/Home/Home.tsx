@@ -5,7 +5,7 @@ import LocationBar from "../../common/components/functional/location-bar/Locatio
 import { usePosition } from "../../common/hooks/usePosition";
 import { getLocationStart, selectuserLocationDetails } from "./home.slice";
 import { useDispatch, useSelector } from "react-redux";
-import HoverCard from "../../common/components/core/hover-card/HoverCard";
+import CategoryCard from "../../common/components/core/category-card/CategoryCard";
 import Grid from "@material-ui/core/Grid";
 import CollectionCard from "../../common/components/core/collection-card/CollectionCard";
 import { Typography } from "@material-ui/core";
@@ -21,16 +21,16 @@ const HomePage = () => {
       <div className='container'>
         <div className='flex'>
           <div className='flex-1'>
-            <HoverCard text='Order Food Online' imageUrl='' />
+            <CategoryCard text='Order Food Online' imageUrl='' />
           </div>
           <div className='flex-1'>
-            <HoverCard text='Go out for a meal' imageUrl='' />
+            <CategoryCard text='Go out for a meal' imageUrl='' />
           </div>
           <div className='flex-1'>
-            <HoverCard text='Nightlife & Clubs' imageUrl='' />
+            <CategoryCard text='Nightlife & Clubs' imageUrl='' />
           </div>
           <div className='flex-1'>
-            <HoverCard text='Zomato Pro' imageUrl='' />
+            <CategoryCard text='Zomato Pro' imageUrl='' />
           </div>
         </div>
         {/*Map Collections Cards  */}

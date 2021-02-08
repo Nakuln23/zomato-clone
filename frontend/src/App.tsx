@@ -16,6 +16,7 @@ import {
   getLocationStart,
   selectuserLocationDetails,
 } from "./pages/Home/home.slice";
+import ListRestaurant from "./pages/ListRestaurant/ListRestaurant";
 
 function App() {
   const { latitude, longitude, error } = usePosition();
@@ -38,8 +39,11 @@ function App() {
             <HomePage />
           )}
         </Route>
-        <Route path='/:city'>
+        <Route exact path='/:city'>
           <HomePage />
+        </Route>
+        <Route exact path='/:city/delivery'>
+          <ListRestaurant />
         </Route>
       </Switch>
     </Router>

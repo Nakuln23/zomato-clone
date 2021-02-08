@@ -7,6 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import { useHistory, useParams } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -19,13 +20,21 @@ interface IHoverCard {
   imageUrl: string;
 }
 
-export default function HoverCard(props: IHoverCard) {
+export default function CategoryCard(props: IHoverCard) {
   const classes = useStyles();
-  const { text, imageUrl } = props;
+  const history = useHistory();
+  type Params = {
+    city: string;
+  };
 
+  const { city }: Params = useParams();
+  const { text, imageUrl } = props;
+  const handleClick = () => {
+    history.push(`/${city}/delivery`);
+  };
   return (
     <Card className={classes.root}>
-      <CardActionArea>
+      <CardActionArea onClick={handleClick}>
         <CardMedia
           component='img'
           alt='Contemplative Reptile'
