@@ -12,11 +12,12 @@ import store from "./store";
 import Search from "./features/Search/Search";
 import HomePage from "./pages/Home/Home";
 import { usePosition } from "./common/hooks/usePosition";
-import {
-  getLocationStart,
-  selectuserLocationDetails,
-} from "./pages/Home/home.slice";
 import ListRestaurant from "./pages/ListRestaurant/ListRestaurant";
+import {
+  getLocationsDetailsBasedOnCoordinatesStart,
+  getUserCityDetailsStart,
+  selectuserLocationDetails,
+} from "./store/api/commonApi/common.slice";
 
 function App() {
   const { latitude, longitude, error } = usePosition();
@@ -25,15 +26,20 @@ function App() {
 
   useEffect(() => {
     if (latitude && longitude) {
-      dispatch(getLocationStart({ params: { lat: latitude, lon: longitude } }));
+      dispatch(
+        getUserCityDetailsStart({
+          params: { lat: latitude, lon: longitude },
+        })
+      );
     }
   }, [latitude, longitude]);
-  let cityName = userLocationDetails[0]?.city_name.toLowerCase();
+
+  let cityName = userLocationDetails?.name?.toLowerCase();
   return (
     <Router>
       <Switch>
         <Route exact path='/'>
-          {userLocationDetails.length ? (
+          {userLocationDetails ? (
             <Redirect push to={`/${cityName}`} />
           ) : (
             <HomePage />

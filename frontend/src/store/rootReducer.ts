@@ -1,10 +1,11 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import { onSearchReducer } from "../features/Search/search.slice";
-import { homeReducer } from '../pages/Home';
+import { commonApiReducer } from "./api/commonApi/common.slice";
+import { restaurantReducer } from "./api/restaurant/restaurant.slice";
 
 const rootReducer = combineReducers({
-  SearchState: onSearchReducer,
-  HomeState : homeReducer
+
+  commonApiState : commonApiReducer,
+  restaurantState : restaurantReducer
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

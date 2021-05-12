@@ -3,7 +3,6 @@ import { NavLink, useParams } from "react-router-dom";
 import SearchBar from "../../common/components/functional/search-bar/SearchBar";
 import LocationBar from "../../common/components/functional/location-bar/LocationBar";
 import { usePosition } from "../../common/hooks/usePosition";
-import { getLocationStart, selectuserLocationDetails } from "./home.slice";
 import { useDispatch, useSelector } from "react-redux";
 import CategoryCard from "../../common/components/core/category-card/CategoryCard";
 import Grid from "@material-ui/core/Grid";
@@ -12,9 +11,13 @@ import { Typography } from "@material-ui/core";
 import "./Home.scss";
 import PopularLocalitiesCard from "../../common/components/core/popular-localities-card/PopularLocalitiesCard";
 import Hero from "./components/Hero";
+import { selectuserLocationDetails } from "../../store/api/commonApi/common.slice";
 
 const HomePage = () => {
   const userLocationDetails = useSelector(selectuserLocationDetails);
+
+
+
   return (
     <div>
       <Hero userLocationDetails={userLocationDetails} />
@@ -65,7 +68,7 @@ const HomePage = () => {
 
         <div>
           <Typography>
-            Popular localities in and around {userLocationDetails[0]?.city_name}
+            Popular localities in and around {userLocationDetails?.name}
           </Typography>
           <PopularLocalitiesCard placeName={"Dharampeth"} noOfPlaces={75} />
         </div>
